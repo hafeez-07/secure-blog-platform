@@ -1,0 +1,24 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+
+<body class="flex flex-col items-center w-full bg-zinc-900 text-white">
+  <form action="/update/<%=post._id%>" method="post">
+    <div class="flex flex-col items-center">
+      <textarea
+        class="transform duration-500 bg-zinc-800 border rounded-md leading-relaxed border-zinc-900 outline-none p-2 w-90 focus:ring-2 focus:ring-orange-400"
+        rows="7"
+        name="content"
+        placeholder="What's on your mind?"
+      >
+ <%= post.content%></textarea
+      >
+
+      <input
+        class="bg-orange-500 rounded w-30 px-2 py-1 mt-2"
+        type="submit"
+        value="update"
+      />
+    </div>
+  </form>
+</body>
+
+<%- include('./partials/footer') %>
