@@ -1,17 +1,19 @@
 <%- include('./partials/header')%>
 
 <%- include('./partials/navbar') %>
-  <body class="min-h-screen bg-zinc-900 text-white">
+ 
 
 
   <!-- Profile Section -->
   <div class="max-w-5xl mx-auto mt-10 px-6">
     <div class=" flex items-center gap-4">
+      <a href="/profile">
       <img
         class="w-14 h-14 object-cover rounded-full border-2 border-orange-400"
         src="<%=user.profilePic%>"
         alt="DP"
       />
+      </a>
       <div>
         <h2 class="text-2xl font-semibold">
           Hello, <span class="text-orange-400"><%=user.name%></span> 👋
@@ -41,6 +43,12 @@
   <div class="max-w-5xl mx-auto mt-12 mb-6 px-6">
     <h2 class="text-lg font-semibold mb-6 text-zinc-300">Your Blogs</h2>
 
+    <% if (user.posts.length === 0) { %>
+  <div class="text-center text-zinc-400 mt-6">
+    <p class="text-lg font-medium">No posts yet</p>
+    <p class="text-sm mt-2">Start sharing your thoughts with the world.</p>
+  </div>
+<% } %>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       
       <% user.posts.reverse().forEach((post)=>{ %>
@@ -60,7 +68,7 @@
             class="hover:text-pink-400 transition"
             href="/like/<%=post._id%>"
           >
-            <%= post.likes.includes(user._id) ? 'Like ❤️' : 'Like 🤍' %>
+            <%= post.likes.some(id=>id.toString()===user._id.toString()) ? 'Like ❤️' : 'Like 🤍' %>
           </a>
           <div class="flex gap-3">
             
@@ -82,5 +90,5 @@
     </div>
   </div>
 
-</body>
+
 <%- include('./partials/footer') %>

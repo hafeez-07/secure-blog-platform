@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer components {
+  .form-group {
+    @apply grid grid-cols-[1fr_2fr] gap-4 items-center;
+  }
+  .form-input {
+    @apply border-black bg-zinc-900 p-3 outline-none rounded-md focus:ring-2 focus:ring-orange-400 w-90;
+  }
+}
+

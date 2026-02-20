@@ -1,42 +1,41 @@
 <%- include('./partials/header') %>
 
-  <body
-    class="min-h-screen flex items-center justify-center bg-zinc-900 text-white px-4"
+<div class="min-h-screen w-full flex justify-center items-center">
+  <div
+    class="w-full max-w-md bg-zinc-800 rounded-2xl shadow-2xl p-8 border border-zinc-700"
   >
-    <div
-      class="w-full max-w-md bg-zinc-800 rounded-2xl shadow-2xl p-8 border border-zinc-700"
-    >
-      <h2 class="text-3xl font-semibold text-center mb-6">Welcome Back</h2>
+    <h2 class="text-3xl font-semibold text-center mb-6">Welcome Back</h2>
 
-      <form action="/login" method="post" class="flex flex-col gap-4">
-        <input
-          class="bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition"
-          type="email"
-          placeholder="Email"
-          name="email"
-          required
-        />
+    <form action="/login" method="post" class="flex flex-col gap-4">
+      <input
+        class="bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition"
+        type="email"
+        placeholder="Email"
+        name="email"
+        required
+      />
 
-        <input
-          class="bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition"
-          type="password"
-          placeholder="Password"
-          name="password"
-          required
-        />
+      <input
+        class="bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition"
+        type="password"
+        placeholder="Password"
+        name="password"
+        required
+      />
 
-        <button
-          class="mt-2 bg-blue-600 hover:bg-blue-700 transition py-2 rounded-lg font-medium"
-          type="submit"
-        >
-          Login Account
-        </button>
-      </form>
+      <button
+        class="mt-2 bg-blue-600 hover:bg-blue-700 transition py-2 rounded-lg font-medium"
+        type="submit"
+      >
+        Login Account
+      </button>
+    </form>
 
-      <div class="flex justify-center gap-2 mt-6 text-sm text-zinc-400">
-        <p>Don’t have an account?</p>
-        <a href="/" class="text-blue-400 hover:underline"> Register </a>
-      </div>
+    <div class="flex justify-center gap-2 mt-6 text-sm text-zinc-400">
+      <p>Don’t have an account?</p>
+      <a href="/" class="text-blue-400 hover:underline"> Register </a>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+<%-include('./partials/footer')%>

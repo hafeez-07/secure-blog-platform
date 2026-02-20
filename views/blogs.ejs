@@ -2,11 +2,17 @@
 
 <%- include('./partials/navbar') %>
 
-  <body class="pb-6 min-h-screen bg-zinc-900 text-white">
  
 
     <!-- blogs -->
       <div class="max-w-5xl mx-auto mt-12 px-6">
+
+       <%if(posts.length==0){%>
+        <div class="flex justify-center">
+            <div class="text-2xl font-bold text-zinc-400">No posts yet</div>
+        </div>
+          
+       <%}%>
 
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -15,9 +21,9 @@
 
       <div class="flex flex-col bg-zinc-800 rounded-2xl p-5 shadow-lg hover:shadow-orange-500/10 transition duration-300 border border-zinc-700">
         <div class="flex items-center gap-3 mb-4">
-          <div class="h-8 w-8">
-            <img class="rounded-[50%] w-full" src="<%=post.user.profilePic%>" alt="profile">
-          </div>
+          <a href="<%=post.user.profilePic%>" class="h-10 w-10">
+            <img class="rounded-[50%] w-full objecct-cover" src="<%=post.user.profilePic%>" alt="profile">
+          </a>
 <h3 class="text-orange-400 font-semibold mb-2">
           <%= post.user.username %>
         </h3>
@@ -31,7 +37,7 @@
         
 
         <div class="flex justify-between mt-4 text-sm">
-          <a href="/like/<%=post._id %>"> <%= post.likes.includes(post.user._id) ? 'Like ❤️' : 'Like 🤍'%>
+          <a href="/like/<%=post._id %>"> <%= (post.likes.some(id=>id.toString()===user._id.toString())) ? 'Like ❤️' : 'Like 🤍'%>
           </a>
           <div class=" text-sm text-zinc-400">
           <%= post.likes.length %> likes
@@ -46,5 +52,5 @@
     </div>
   </div>
 
-  </body>
+
 <%- include('./partials/footer') %>
