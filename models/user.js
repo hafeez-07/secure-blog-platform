@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
       ref: "Post",
     },
   ],
-  profilePic: { type: String, default: "/images/uploads/defaultProfile.webp" },
+  profilePic: { type: String, default: "/images/defaultProfile.webp" },
 });
 
 const User = mongoose.model("User", userSchema);
