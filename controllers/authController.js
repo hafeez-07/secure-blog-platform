@@ -9,11 +9,20 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     //check if user already exist
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.status(400).json({
-        msg: "User already exist , please login",
-      });
+    const existingUser = await User.findOne({
+      $or: [{ username }, { email }],
+    });
+    if (existingUser) {
+      if (existingUser.email == email) {
+        return res.status(400).json({
+          Error: "Email is already registered",
+        });
+      }
+      if (existingUser.username == username) {
+        return res.status(400).json({
+          Error: "Username is already taken",
+        });
+      }
     }
 
     //if he does not exist , create a new user
