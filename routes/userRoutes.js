@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {
+  deleteUser,
   getHome,
   getProfile,
   profileUpdate,
@@ -21,5 +22,6 @@ router.post(
   uploads.single("profilePic"),
   profileUpload,
 );
+router.get("/deleteAccount", protect, deleteUser);
 
 export default router;

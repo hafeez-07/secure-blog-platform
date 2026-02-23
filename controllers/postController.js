@@ -33,7 +33,7 @@ export const allBlog = async (req, res) => {
 //delete a blog
 export const deleteBlog = async (req, res) => {
   try {
-    const postId = req.params.id;
+    const postId = req.params.postId;
     const deletedPost = await Post.findByIdAndDelete(postId);
     if (!postId) {
       res.status(400).json({

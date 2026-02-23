@@ -1,24 +1,24 @@
 <!-- Top Navbar -->
 <div class="sticky top-0 w-full bg-zinc-950 shadow-2xl shadow-gray-800">
   <div class="max-w-5xl mx-auto flex justify-between items-center py-2">
-    <div class="flex items-center gap-5">
-      <div class="h-18 w-16 mx-auto">
+    <div class="flex items-center">
+      <div class="h-12 w-14 sm:h-18 sm:w-20 mx-auto">
         <img
-          class="rounded-[50%] h-16 w-16"
+          class="rounded-[50%] h-12 w-14 sm:h-16 sm:w-20"
           src="/images/vaultvoice_home_logo.png"
           alt="logo"
         />
       </div>
-     <div class="h-18 w-16 mx-auto">
+      <div class="h-10 w-30 sm:h-14 sm:w-44 mx-auto">
         <img
-          class="rounded-[50%] h-16 w-16"
+          class="h-10 w-30 rounded-[50%] sm:h-14 sm:w-44"
           src="/images/vaultvoice_home_text.png"
           alt="logo"
         />
       </div>
     </div>
 
-    <div class="flex gap-5">
+    <div class="hidden sm:flex gap-5 >
       <a class="transition px-1 hover:text-orange-500" href="/home">Home</a>
       <a class="transition px-1 hover:text-orange-500" href="/profile"
         >Profile</a
@@ -30,6 +30,12 @@
         href="/logout"
       >
         Logout
+      </a>
+      <a
+        class="bg-red-500 hover:bg-red-600 transition px-4 py-1 rounded-md text-sm"
+        href="/deleteAccount"
+      >
+        Delete account
       </a>
     </div>
   </div>
