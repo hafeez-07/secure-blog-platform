@@ -2,10 +2,10 @@
 
 <%- include('./partials/navbar') %>
  
-
+<main class="w-full grow">
 
   <!-- Profile Section -->
-  <div class="max-w-5xl mx-auto mt-10 px-6">
+  <div class="max-w-5xl mx-auto mt-6 px-6">
     <div class=" flex items-center gap-4">
       <a href="/profile">
       <img
@@ -15,7 +15,7 @@
       />
       </a>
       <div>
-        <h2 class="text-2xl font-semibold">
+        <h2 class=" text-xl sm:text-2xl font-semibold">
           Hello, <span class="text-orange-400"><%=user.name%></span> 👋
         </h2>
         <p class="text-zinc-400 text-sm">Share something today</p>
@@ -40,7 +40,7 @@
   </div>
 
   <!-- Posts Section -->
-  <div class="max-w-5xl mx-auto mt-12 mb-6 px-6">
+  <div class="max-w-5xl mx-auto mt-12 mb-5 px-6">
     <h2 class="text-lg font-semibold mb-6 text-zinc-300">Your Blogs</h2>
 
     <% if (user.posts.length === 0) { %>
@@ -60,7 +60,8 @@
         </p>
 
         <div class="mt-4 text-sm text-zinc-400">
-          <%= post.likes.length %> likes
+          <a href="/likes/<%=post._id%>"><%= post.likes.length %> likes</a>
+          
         </div>
 
         <div class="flex justify-between mt-4 text-sm">
@@ -89,6 +90,8 @@
 
     </div>
   </div>
+
+  </main>
 
 
 <%- include('./partials/footer') %>

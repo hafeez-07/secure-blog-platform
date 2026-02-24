@@ -75,9 +75,8 @@ export const updateBlog = async (req, res) => {
   }
 };
 
-
 //like blog
-export const likeBlog= async (req, res) => {
+export const likeBlog = async (req, res) => {
   try {
     const postId = req.params.postId;
     const userId = req.user.id;
@@ -98,6 +97,25 @@ export const likeBlog= async (req, res) => {
     await post.save();
 
     res.redirect(req.get("Referer") || "/blogs");
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+    });
+  }
+};
+
+//get users who liked ur post
+export const likedUsers = async (req, res) => {
+  try {
+    console.log("likedUser cntroller");
+    const postId = req.params.id;
+    const userId = req.user.id;
+
+    const post = await Post.findById(postId).populate("likes", "username profilePic");
+
+    console.log(post);
+
+    res.render("likes", { post });
   } catch (err) {
     res.status(500).json({
       error: err.message,

@@ -9,6 +9,7 @@ import {
   editBlog,
   updateBlog,
   likeBlog,
+  likedUsers,
 } from "../controllers/postController.js";
 
 router.post("/post", protect, postBlog);
@@ -17,5 +18,6 @@ router.get("/delete/:postId", protect, deleteBlog);
 router.get("/edit/:postId", protect, editBlog);
 router.post("/update/:postId", protect, updateBlog);
 router.get("/like/:postId", protect, likeBlog);
+router.get("/likes/:id", protect, likedUsers);
 
 export default router;
