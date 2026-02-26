@@ -98,5 +98,5 @@ export const loginUser = async (req, res) => {
 //logout user
 export const logoutUser = (req, res) => {
   res.clearCookie("token");
-  res.redirect("/");
+  res.redirect("/login");
 };

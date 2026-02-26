@@ -1,0 +1,157 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+
+<div
+  class="min-h-screen bg-linear-to-br from-zinc-900 via-zinc-950 to-black text-zinc-200 py-14 px-6"
+>
+  <!-- Page Heading -->
+  <div class="max-w-5xl mx-auto mb-10">
+    <h1 class="text-3xl font-semibold tracking-tight">Account Settings</h1>
+    <p class="text-zinc-400 mt-2 text-sm">
+      Manage your personal information and account preferences.
+    </p>
+  </div>
+
+  <!-- Main Card -->
+  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+    <!-- Left Side Profile -->
+    <div
+      class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-2xl p-8 flex flex-col items-center shadow-xl"
+    >
+      <div class="relative group">
+        <a href="<%=user.profilePic%>">
+          <img
+            src="<%=user.profilePic%>"
+            class="w-36 h-36 object-cover rounded-full border-4 border-orange-500 shadow-lg transition duration-300 group-hover:scale-105"
+          />
+        </a>
+
+        <button
+          id="inputButton"
+          type="button"
+          class="absolute bottom-2 right-2 bg-orange-500 hover:bg-orange-400 text-white rounded-full p-2 shadow-md transition"
+        >
+          ✏️
+        </button>
+      </div>
+
+      <h2 class="mt-6 text-lg font-medium"><%=user.name%></h2>
+      <p class="text-sm text-zinc-400">@<%=user.username%></p>
+
+      <form
+        action="profile/uploadImage"
+        method="post"
+        enctype="multipart/form-data"
+        id="profileForm"
+      >
+        <input type="file" name="profilePic" id="fileInput" hidden />
+      </form>
+    </div>
+
+    <!-- Right Side Form -->
+    <div
+      class="md:col-span-2 bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-2xl p-10 shadow-xl"
+    >
+      <form class="space-y-6" action="/profile/update" method="post">
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Username</label>
+          <input
+            type="text"
+            name="username"
+            value="<%=user.username%>"
+            class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Name</label>
+          <input
+            type="text"
+            name="name"
+            value="<%=user.name%>"
+            class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value="<%=user.email%>"
+            class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Age</label>
+          <input
+            type="number"
+            name="age"
+            value="<%=user.age%>"
+            class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+          />
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="bg-orange-500 hover:bg-orange-400 text-white px-6 py-2 rounded-lg shadow-md transition duration-200"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Danger Zone -->
+  <div class="max-w-5xl mx-auto mt-16">
+    <div class="bg-red-950/40 border border-red-800 rounded-2xl p-8 shadow-lg">
+      <h3 class="text-lg font-semibold text-red-400 mb-4">⚠️ Danger Zone</h3>
+
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <div>
+          <p class="text-zinc-400 text-sm">
+            Permanently delete your account and all associated data.
+          </p>
+        </div>
+
+        <div class="flex gap-4">
+          <a
+            href="/logout"
+            class="border border-zinc-600 hover:border-zinc-400 px-5 py-2 rounded-lg text-sm transition"
+          >
+            Logout
+          </a>
+
+          <a
+            href="/deleteAccount"
+            class="bg-red-600 hover:bg-red-500 px-5 py-2 rounded-lg text-white text-sm transition shadow-md"
+          >
+            Delete Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.querySelector("#inputButton");
+    const fileInput = document.querySelector("#fileInput");
+    const profileForm = document.querySelector("#profileForm");
+
+    button.addEventListener("click", () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", () => {
+      profileForm.submit();
+    });
+  });
+</script>
+
+<%- include('./partials/footer') %>

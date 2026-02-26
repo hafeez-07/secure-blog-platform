@@ -19,7 +19,7 @@ export const getProfile = async (req, res) => {
   try {
     const userId = req.user.id;
     const user = await User.findById(userId);
-    res.render("profile", { user });
+    res.render("setting", { user });
   } catch (err) {
     res.status(500).json({
       error: err.message,
@@ -43,7 +43,7 @@ export const profileUpdate = async (req, res) => {
       },
     );
 
-    res.redirect("/profile");
+    res.redirect("/setting");
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -69,7 +69,7 @@ export const profileUpload = async (req, res) => {
       },
     );
 
-    res.redirect("/profile");
+    res.redirect("/setting");
   } catch (err) {
     res.status(500).json({
       error: err.message,

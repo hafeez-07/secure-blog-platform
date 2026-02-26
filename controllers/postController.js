@@ -111,9 +111,10 @@ export const likedUsers = async (req, res) => {
     const postId = req.params.id;
     const userId = req.user.id;
 
-    const post = await Post.findById(postId).populate("likes", "username profilePic");
-
-    console.log(post);
+    const post = await Post.findById(postId).populate(
+      "likes",
+      "username profilePic",
+    );
 
     res.render("likes", { post });
   } catch (err) {

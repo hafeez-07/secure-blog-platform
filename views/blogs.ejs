@@ -5,7 +5,7 @@
  
 
     <!-- blogs -->
-      <div class="max-w-5xl mx-auto mt-12 px-6">
+      <div class="grow w-full max-w-5xl mx-auto mt-12 px-6">
 
        <%if(posts.length==0){%>
         <div class="flex justify-center">
@@ -40,7 +40,7 @@
           <a href="/like/<%=post._id %>"> <%= (post.likes.some(id=>id.toString()===user._id.toString())) ? 'Like ❤️' : 'Like 🤍'%>
           </a>
           <div class=" text-sm text-zinc-400">
-          <%= post.likes.length %> likes
+          <a href="/likes/<%=post._id%>"><%= post.likes.length %> likes</a>
         </div>
           
         </div>
