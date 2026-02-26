@@ -29,7 +29,7 @@
     </div>
 
     <!-- button to toggle menu -->
-    <button class="sm:hidden flex" id="menuButton">
+    <button class="sm:hidden flex transform" id="menuButton">
       <svg class="h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
         <path
@@ -42,8 +42,11 @@
 </div>
 
 <!-- for mobile / small screens -->
-<div class="w-full hidden sm:hidden" id="mobileMenu">
-  <div class="flex flex-col gap-2 px-3">
+<div
+  class="w-full max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-out"
+  id="mobileMenu"
+>
+  <div class="flex flex-col gap-2 p-3 bg-zinc-950">
     <a href="/home">Home</a>
     <a href="/blogs">Blogs</a>
     <a href="/setting">Setting</a>
@@ -54,6 +57,8 @@
   const mobileMenu = document.querySelector("#mobileMenu");
 
   menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("max-h-28");
+    mobileMenu.classList.toggle("opacity-100");
+    menuBtn.classList.toggle("rotate-90");
   });
 </script>

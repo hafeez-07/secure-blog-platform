@@ -9,6 +9,11 @@
   }
 }
 
+#mobileMenu.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
 /* Scrollbar width */
 ::-webkit-scrollbar {
   width: 8px;
