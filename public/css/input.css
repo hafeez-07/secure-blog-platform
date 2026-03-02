@@ -9,9 +9,11 @@
   }
 }
 
+
 #mobileMenu.open {
-  max-height: 200px;
+  transform: translateY(0);
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Scrollbar width */
