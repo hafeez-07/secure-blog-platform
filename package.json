@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"nodemon server.js\" \"tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch\"",
-     "build": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify"
+    "build": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,12 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.1",
     "multer": "^2.0.2"

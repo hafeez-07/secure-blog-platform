@@ -14,14 +14,12 @@ export const registerUser = async (req, res) => {
     });
     if (existingUser) {
       if (existingUser.email == email) {
-        return res.status(400).json({
-          Error: "Email is already registered",
-        });
+        req.flash("error", "Email already registered");
+        return res.redirect("/");
       }
       if (existingUser.username == username) {
-        return res.status(400).json({
-          Error: "Username is already taken",
-        });
+        req.flash("error", "Username already taken");
+        return res.redirect("/");
       }
     }
 
@@ -54,9 +52,8 @@ export const loginUser = async (req, res) => {
 
     //if user is not present
     if (!user) {
-      return res.status(400).json({
-        error: "User does not exist , please sign up",
-      });
+      req.flash("error", "Invalid username or password");
+      return res.redirect("/login");
     }
 
     //if he is present , match password
@@ -65,9 +62,8 @@ export const loginUser = async (req, res) => {
 
     //if password does not match
     if (!isMatch) {
-      return res.status(400).json({
-        error: "Password mismatch , try again",
-      });
+      req.flash("error", "Invalid username or password");
+      return res.redirect("/login");
     }
 
     //create a token
@@ -84,5 +80,6 @@ export const loginUser = async (req, res) => {
 //logout user
 export const logoutUser = (req, res) => {
   res.clearCookie("token");
+  req.flash("success", "logged out succesfully");
   res.redirect("/login");
 };
