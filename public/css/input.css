@@ -1,15 +1,17 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer components {
   .form-group {
     @apply grid sm:grid-cols-[1fr_2fr] gap-4 items-center;
   }
-  
-  .form-input{
+
+  .form-input {
     @apply w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3  outline-none focus:ring focus:ring-orange-400 focus:bg-zinc-900 transition duration-300 ease-in;
   }
-  .submit-button{
-    @apply mt-3 bg-orange-500 hover:bg-orange-600 transition px-6 py-2 rounded-lg font-medium duration-300 ease-in
+  .submit-button {
+    @apply mt-3 bg-orange-500 hover:bg-orange-600 transition px-6 py-2 rounded-lg font-medium duration-300 ease-in;
   }
 }
 
